@@ -4,6 +4,8 @@ import { postMarkdown } from './src/lib/markdown';
 
 export default defineConfig({
   output: 'static',
+  site: 'https://qianyi-xinshou.github.io',
+  base: process.env.GITHUB_ACTIONS ? '/qianyi-site' : '/',
   trailingSlash: 'always',
   devToolbar: { enabled: false },
   markdown: postMarkdown(fileURLToPath(new URL('.', import.meta.url))),
