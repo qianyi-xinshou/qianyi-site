@@ -34,6 +34,7 @@ export function inspectHtml(html: string) {
 
 export function checkSite(root = process.cwd()) {
   const dist = path.join(root, 'dist');
+  const basePath = process.env.GITHUB_ACTIONS ? '/qianyi-site' : '';
   const posts = readPosts(root).filter(post => !post.metadata.draft);
   const expected = new Set([...globSync('**/*.astro', { cwd: path.join(root, 'src/pages') })]
     .filter(file => !file.includes('['))
@@ -52,7 +53,11 @@ export function checkSite(root = process.cwd()) {
       references++;
       if (/^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(reference)) continue;
       const url = new URL(reference, `https://local.test/${path.relative(dist, file).split(path.sep).join('/')}`);
-      let target = path.resolve(dist, `.${decodeURIComponent(url.pathname)}`);
+      const pathname = decodeURIComponent(url.pathname);
+      const assetPath = basePath && (pathname === basePath || pathname.startsWith(`${basePath}/`))
+        ? pathname.slice(basePath.length) || '/'
+        : pathname;
+      let target = path.resolve(dist, `.${assetPath}`);
       if (existsSync(target) && statSync(target).isDirectory()) target = path.join(target, 'index.html');
       if (!isInside(dist, target) || !existsSync(target)) errors.push(`${path.relative(dist, file)}: missing target ${reference}`);
       else if (url.hash && pages.has(target) && !pages.get(target)!.ids.has(decodeURIComponent(url.hash.slice(1)))) errors.push(`${path.relative(dist, file)}: missing fragment ${reference}`);
