@@ -1,11 +1,17 @@
 ---
-interface Props { kind: 'knowledge' | 'collaboration' }
+interface Props { kind: 'lejianel' | 'knowledge' | 'collaboration' }
 const { kind } = Astro.props;
+const lejianel = kind === 'lejianel';
 const knowledge = kind === 'knowledge';
 ---
-<div class="work-item" data-reveal data-reveal-delay={knowledge ? 0 : 100}>
-  <a class:list={['work-card', knowledge ? 'work-card--knowledge' : 'work-card--collaboration']} href={knowledge ? '/work/fuxi-mini/' : '/work/agent-collaboration/'} data-ambient>
-    <div class="work-preview" aria-hidden="true">
+<div class="work-item" data-reveal data-reveal-delay={lejianel || knowledge ? 0 : 100}>
+  <a class:list={['work-card', lejianel ? 'work-card--lejianel' : knowledge ? 'work-card--knowledge' : 'work-card--collaboration']} href={lejianel ? '/work/lejianel/' : knowledge ? '/work/fuxi-mini/' : '/work/agent-collaboration/'} data-ambient data-palette={lejianel ? 'dune' : knowledge ? 'aurora' : 'ocean'}>
+    {lejianel ? <div class="work-preview work-preview--project">
+      <div class="project-cover-layout">
+        <div class="project-cover-device"><div class="project-cover-frame"><img class="project-cover-image" src="/assets/lejianel/cover.png" alt="LEJIANEL 乐见儿美妆 App 作品封面" /></div></div>
+        <div class="project-cover-info"><div class="meta-line"><span>移动端 App</span><span>UI 设计</span></div><strong><span>LEJIANEL</span>乐见儿美妆 App</strong><p>统一美妆零售产品的视觉体系与核心页面体验。</p><span class="project-cover-link">查看项目详情 <span aria-hidden="true">→</span></span></div>
+      </div>
+    </div> : <div class="work-preview" aria-hidden="true">
       <span class="preview-label">{knowledge ? '从素材，到自己的判断' : '有据可查，有始有终'}</span>
       {knowledge ? <div class="knowledge-visual">
         <svg class="work-wires" viewBox="0 0 400 164" preserveAspectRatio="none" fill="none"><path d="M55 82 H340" class="wire-track"/><path d="M55 82 H340" class="wire-current ambient"/></svg>
@@ -16,12 +22,12 @@ const knowledge = kind === 'knowledge';
         <div class="collaboration-pair"><div class="collaborator"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="5" width="16" height="14" rx="3"/><path d="m8 10 2 2-2 2m5 0h3"/></svg><strong>发现方</strong><small>问题与证据</small></div><div class="handoff-bridge"><span class="handoff-packet ambient"></span><span>交接</span></div><div class="collaborator"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="5" width="16" height="14" rx="3"/><path d="m8 12 3 3 5-6"/></svg><strong>责任方</strong><small>修复与版本</small></div></div>
         <div class="handoff-return"><span>核验结果</span><svg viewBox="0 0 280 22" preserveAspectRatio="none" fill="none"><path d="M278 1v8a10 10 0 0 1-10 10H12A10 10 0 0 1 2 9V1m0 0 4 5M2 1l-2 5" /></svg></div>
       </div>}
-    </div>
+    </div>}
     <div class="work-card-body">
-      <div class="meta-line"><span>{knowledge ? '个人工具' : '实践记录'}</span><span>{knowledge ? '持续维护' : '协议 v3'}</span></div>
-      <h3>{knowledge ? 'fuxi-mini' : '跨仓 Agent 协作'}</h3>
-      <p>{knowledge ? '把收藏的素材整理成自己的判断，再从笔记中找到可写的选题。' : '让不同仓库的 Agent 按明确的责任与版本完成交接，并留下可核验的记录。'}</p>
-      <span class="card-link">{knowledge ? '查看整理样例' : '阅读实践记录'}<span aria-hidden="true">→</span></span>
+      <div class="meta-line"><span>{lejianel ? '移动端 App' : knowledge ? '个人工具' : '实践记录'}</span><span>{lejianel ? 'UI 设计' : knowledge ? '持续维护' : '协议 v3'}</span></div>
+      <h3>{lejianel ? 'LEJIANEL｜乐见儿美妆 App' : knowledge ? 'fuxi-mini' : '跨仓 Agent 协作'}</h3>
+      <p>{lejianel ? '围绕视觉体系、商品展示、会员服务与营销场景，统一美妆零售产品的界面语言。' : knowledge ? '把收藏的素材整理成自己的判断，再从笔记中找到可写的选题。' : '让不同仓库的 Agent 按明确的责任与版本完成交接，并留下可核验的记录。'}</p>
+      <span class="card-link">{lejianel ? '查看项目详情' : knowledge ? '查看整理样例' : '阅读实践记录'}<span aria-hidden="true">→</span></span>
     </div>
   </a>
 </div>

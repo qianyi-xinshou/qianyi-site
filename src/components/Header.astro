@@ -3,14 +3,13 @@ interface Props { section: string }
 const { section } = Astro.props;
 const navigation = [
   { section: 'home', href: '/', label: '首页' },
-  { section: 'writing', href: '/writing/', label: '文章' },
   { section: 'work', href: '/work/', label: '作品' },
   { section: 'about', href: '/about/', label: '关于' },
 ];
 ---
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/" aria-label="mohan 的工作室首页">mohan<span>.</span></a>
+    <a class="brand" href="/" aria-label="QIANYI 首页">QIANYI</a>
     <nav id="primary-navigation" class="primary-nav" aria-label="主导航">
       {navigation.map(item => <a href={item.href} aria-current={section === item.section ? (Astro.url.pathname === item.href ? 'page' : 'location') : undefined}>{item.label}</a>)}
     </nav>

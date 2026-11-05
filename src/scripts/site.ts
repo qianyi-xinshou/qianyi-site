@@ -4,3 +4,8 @@ import './navigation';
 import './archive';
 import './article';
 import './presentation';
+import './hero-dot-grid';
+import './work-field';
+import './palette';
+import './header-state';
+import './glow-cursor';

@@ -1,30 +1,48 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
-import { getPosts } from '../lib/content';
-import PostCard from '../components/PostCard.astro';
 import WorkCard from '../components/WorkCard.astro';
 import StudioScene from '../components/StudioScene.astro';
-const posts = await getPosts();
 ---
-<SiteLayout title="mohan 的工作室 · 实践、写作与思考" description="我是 mohan，做技术与产品。在这里记录 AI 编程、知识管理，以及把想法做成工具的过程。" section="home" bodyClass="home-page">
+<SiteLayout title="QIANYI · UI 设计与作品" description="我是 QIANYI，一名 UI 设计师，专注于界面设计、交互体验与视觉表达。" section="home" bodyClass="home-page">
   <section class="hero" data-ambient>
     <div class="hero-halo ambient" aria-hidden="true"></div>
+    <canvas class="hero-dot-grid" data-dot-grid aria-hidden="true"></canvas>
     <div class="container showcase-container hero-layout">
       <div class="hero-copy" data-reveal>
-        <p class="hero-kicker"><span></span>技术 · 产品 · 写作</p>
-        <h1>把想法做出来。<span>把经验留下来。</span></h1>
-        <p class="hero-description">我是 mohan，做技术与产品。<br />用 AI 探索新的做法，也把过程中的思考写下来。</p>
-        <div class="hero-actions"><a class="button button-primary" href="#writing">读最近的文章<span aria-hidden="true">↓</span></a><a class="text-link" href="/about/">认识一下<span aria-hidden="true">→</span></a></div>
+        <p class="hero-kicker"><span></span>UI 设计 · 交互 · 视觉</p>
+        <h1>把复杂的东西，做得清楚。<span>把好的体验，做得好看。</span></h1>
+        <div class="hero-actions"><a class="button button-primary" href="#work">查看作品<span aria-hidden="true">↓</span></a><a class="text-link" href="/about/">认识一下<span aria-hidden="true">→</span></a></div>
       </div>
       <div class="hero-studio" data-reveal data-reveal-delay="120"><StudioScene /></div>
     </div>
   </section>
-  <section class="section container showcase-container home-writing" id="writing" tabindex="-1" aria-labelledby="writing-title">
-    <div class="section-heading" data-reveal><div><p class="section-kicker">记录与思考</p><h2 id="writing-title">最近文章</h2></div><a class="text-link" href="/writing/">全部文章<span aria-hidden="true">→</span></a></div>
-    <div class="article-list" data-reveal>{posts.slice(0, 3).map(post => <PostCard post={post.data} />)}{posts.length === 0 && <p class="muted">文章正在整理中。</p>}</div>
-  </section>
-  <section class="section container showcase-container home-work" id="work" tabindex="-1" aria-labelledby="work-title">
+  <section class="section container showcase-container home-work" id="work" tabindex="-1" aria-labelledby="work-title" data-work-field>
+    <canvas class="work-field" data-work-canvas aria-hidden="true"></canvas>
     <div class="section-heading" data-reveal><div><p class="section-kicker">动手做过的事</p><h2 id="work-title">作品与实践</h2><p class="section-description">从实际问题出发，让想法有具体的样子。</p></div><a class="text-link" href="/work/">全部作品<span aria-hidden="true">→</span></a></div>
-    <div class="work-grid"><WorkCard kind="knowledge" /><WorkCard kind="collaboration" /></div>
+    <div class="work-grid"><WorkCard kind="lejianel" /></div>
+  </section>
+  <section class="section container showcase-container process-section" aria-labelledby="process-title" data-ambient>
+    <div class="section-heading" data-reveal><div><p class="section-kicker">我的设计方式</p><h2 id="process-title">把复杂的问题，拆成清晰的体验。</h2><p class="section-description">从理解问题开始，让每一次设计都有明确的依据。</p></div></div>
+    <div class="process-grid">
+      <svg class="process-flow" viewBox="0 0 1000 80" preserveAspectRatio="none" fill="none" aria-hidden="true"><path class="process-flow-track" d="M80 40 C180 18 220 62 320 40 S460 18 500 40 S640 62 680 40 S820 18 920 40"/><path class="process-flow-current ambient" d="M80 40 C180 18 220 62 320 40 S460 18 500 40 S640 62 680 40 S820 18 920 40"/><circle cx="80" cy="40" r="4"/><circle cx="320" cy="40" r="4"/><circle cx="680" cy="40" r="4"/><circle cx="920" cy="40" r="4"/></svg>
+      <article class="process-card" data-reveal><span class="process-number">01</span><h3>理解问题</h3><p>从用户、场景和业务目标出发，找到真正需要解决的问题。</p></article>
+      <article class="process-card" data-reveal data-reveal-delay="80"><span class="process-number">02</span><h3>梳理结构</h3><p>整理信息层级和使用路径，让内容更容易被理解和使用。</p></article>
+      <article class="process-card" data-reveal data-reveal-delay="160"><span class="process-number">03</span><h3>建立视觉</h3><p>用合适的色彩、字体和组件，建立统一且有辨识度的界面。</p></article>
+      <article class="process-card" data-reveal data-reveal-delay="240"><span class="process-number">04</span><h3>打磨体验</h3><p>关注细节、反馈与动效，让设计真正落到可用的产品里。</p></article>
+    </div>
+  </section>
+  <section class="section container showcase-container capabilities-section" aria-labelledby="capabilities-title">
+    <div class="capabilities-intro" data-reveal><p class="section-kicker">我可以做什么</p><h2 id="capabilities-title">让界面清楚，也让体验留下印象。</h2><div class="design-orbit" data-design-orbit aria-label="Design Think Create 动态装置"><canvas data-orbit-canvas aria-hidden="true"></canvas><div class="orbit-words"><span>DESIGN</span><i>/</i><span>THINK</span><i>/</i><span>CREATE</span></div></div></div>
+    <div class="capabilities-list" data-reveal data-reveal-delay="100">
+      <a href="/work/#mobile-app" aria-label="查看移动端 App 设计作品"><span>01</span><strong>移动端 App 设计</strong><small>面向 iOS 与 Android 的界面和使用体验</small><b aria-hidden="true">↗</b></a>
+      <a href="/work/#web-design" aria-label="查看网页端界面设计"><span>02</span><strong>网页端界面设计</strong><small>官网、产品站与 Web 产品界面设计</small><b aria-hidden="true">↗</b></a>
+      <a href="/work/#dashboard" aria-label="查看后台设计"><span>03</span><strong>后台设计</strong><small>复杂信息、数据状态与管理流程梳理</small><b aria-hidden="true">↗</b></a>
+      <a href="/work/#poster" aria-label="查看海报设计"><span>04</span><strong>海报设计</strong><small>活动视觉、宣传画面与品牌传播设计</small><b aria-hidden="true">↗</b></a>
+      <a href="/work/#interaction" aria-label="查看交互体验优化"><span>05</span><strong>交互体验优化</strong><small>信息架构、使用流程与关键任务梳理</small><b aria-hidden="true">↗</b></a>
+    </div>
+  </section>
+  <section class="section container showcase-container home-profile" aria-labelledby="profile-title">
+    <div class="profile-copy" data-reveal><p class="section-kicker">关于 QIANYI</p><h2 id="profile-title">设计不只是把界面做得好看。</h2><p>我关注信息如何被理解，交互如何变得自然，以及视觉如何帮助产品表达自己的气质。</p><a class="text-link" href="/about/">认识我<span aria-hidden="true">→</span></a></div>
+    <div class="contact-panel" data-reveal data-reveal-delay="100"><span class="section-kicker">保持联系</span><strong>有项目想聊聊？</strong><a href="mailto:1847587286@qq.com">1847587286@qq.com<span aria-hidden="true">↗</span></a><a href="tel:18656565087">18656565087<span aria-hidden="true">↗</span></a></div>
   </section>
 </SiteLayout>

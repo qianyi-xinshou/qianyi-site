@@ -2,11 +2,16 @@
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import WorkCard from '../../components/WorkCard.astro';
 ---
-<SiteLayout title="作品与实践 · mohan 的工作室" description="个人工具与实践记录：从遇到的问题、做出的选择，到具体产出与适用边界。" section="work">
+<SiteLayout title="作品与实践 · QIANYI" description="按设计类型整理的界面设计、视觉设计与交互体验作品。" section="work">
   <div class="container showcase-container">
-    <header class="page-intro"><p class="section-kicker">动手做过的事</p><h1>作品与实践</h1><p>从一个具体问题开始，留下工具、方法与实践中的判断。</p></header>
-    <section class="listing-section" aria-label="作品与实践">
-      <div class="work-grid"><WorkCard kind="knowledge" /><WorkCard kind="collaboration" /></div>
-    </section>
+    <header class="page-intro"><p class="section-kicker">动手做过的事</p><h1>作品与实践</h1><p>按设计类型整理作品，让你更快找到感兴趣的项目。</p></header>
+    <nav class="work-category-nav" aria-label="作品分类"><a href="#mobile-app">移动端 App</a><a href="#web-design">网页端界面</a><a href="#dashboard">后台设计</a><a href="#poster">海报设计</a><a href="#interaction">交互体验</a></nav>
+    <div class="work-categories">
+      <section class="work-category" id="mobile-app" aria-labelledby="mobile-app-title"><div class="work-category-heading"><div><p class="section-kicker">01 / Mobile App</p><h2 id="mobile-app-title">移动端 App 设计</h2></div><p>面向 iOS 与 Android 的界面和使用体验。</p></div><div class="work-grid"><WorkCard kind="lejianel" /></div></section>
+      <section class="work-category" id="web-design" aria-labelledby="web-design-title"><div class="work-category-heading"><div><p class="section-kicker">02 / Web</p><h2 id="web-design-title">网页端界面设计</h2></div><p>官网、产品站与 Web 产品界面设计。</p></div><div class="category-empty">网页端作品正在整理中。</div></section>
+      <section class="work-category" id="dashboard" aria-labelledby="dashboard-title"><div class="work-category-heading"><div><p class="section-kicker">03 / Dashboard</p><h2 id="dashboard-title">后台设计</h2></div><p>复杂信息、数据状态与管理流程梳理。</p></div><div class="category-empty">后台设计作品正在整理中。</div></section>
+      <section class="work-category" id="poster" aria-labelledby="poster-title"><div class="work-category-heading"><div><p class="section-kicker">04 / Poster</p><h2 id="poster-title">海报设计</h2></div><p>活动视觉、宣传画面与品牌传播设计。</p></div><div class="category-empty">海报作品正在整理中。</div></section>
+      <section class="work-category" id="interaction" aria-labelledby="interaction-title"><div class="work-category-heading"><div><p class="section-kicker">05 / Interaction</p><h2 id="interaction-title">交互体验优化</h2></div><p>信息架构、使用流程与关键任务梳理。</p></div><div class="category-empty">交互体验作品正在整理中。</div></section>
+    </div>
   </div>
 </SiteLayout>
