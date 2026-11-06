@@ -1,27 +1,31 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro';
+const expertise = [
+  ['移动端设计', '移动端 App 界面设计、用户体验优化与交互设计。'],
+  ['Web 与后台', '网页端、管理后台及业务系统设计，关注复杂信息的呈现与操作效率。'],
+  ['数据可视化', '业务数据大屏与可视化界面设计，注重信息层级与数据可读性。'],
+  ['品牌与视觉', '品牌相关视觉、营销海报与活动物料设计，保持品牌视觉的一致性。'],
+];
+const experience = [
+  ['2024.06 — 至今', '美妆零售与批发企业', 'UI 设计师 · LEJIANEL 产品生态', '负责 LEJIANEL 相关产品的整体 UI 设计与体验优化，覆盖消费端、门店系统、商家后台、股东端及数据可视化大屏等多端设计。'],
+  ['2022.03 — 2024.06', '安徽晟乐汽车科技有限公司', 'UI 设计师 · 汽车出行与车辆服务', '参与汽车出行与车辆服务相关产品的界面设计，涉及用户端、管车端、网页端及数据可视化大屏。'],
+  ['2019.03 — 2022.03', '安徽笑享汽车科技有限公司', 'UI 设计师 · 互联网产品', '参与小说阅读、汽车租赁及盲盒互动等多类产品设计，积累了移动端、管理端等不同业务场景的设计经验。'],
+];
 ---
-<SiteLayout title="关于我 · mohan 的工作室" description="我是 mohan，做技术与产品，关注 AI 编程、知识管理与自媒体写作。" section="about" bodyClass="about-page">
-  <div class="container about-container">
-    <header class="page-intro"><p class="eyebrow">关于我</p><h1>你好，我是 mohan。</h1><p>做技术与产品，也写下实践中的发现。</p></header>
-    <div class="prose about-body">
-      <p>这里记录我做过的工具、遇到的问题，以及在实践中逐渐形成的判断。</p>
-      <h2 id="now">最近关注</h2>
-      <ul class="about-focus">
-        <li><strong>AI 编程</strong><span>怎样让 AI 参与真实项目，并把工作清楚地交接下去。</span></li>
-        <li><strong>知识管理</strong><span>怎样让收藏的材料变成自己的理解，再变成可写的内容。</span></li>
-        <li><strong>产品实践</strong><span>怎样从一个具体需求出发，把想法做成能用的东西。</span></li>
-      </ul>
-      <section class="about-reading" aria-labelledby="start-reading">
-        <h2 id="start-reading">从这些内容开始</h2>
-        <div class="about-reading-grid">
-          <a href="/work/fuxi-mini/"><span class="eyebrow">看一次实践</span><h3>把素材变成可写内容<span aria-hidden="true"> →</span></h3><p>看一段项目复盘如何经过整理，形成一个写作选题。</p></a>
-          <a href="/writing/docs-with-code/"><span class="eyebrow">读一篇文章</span><h3>交接文档先过时了<span aria-hidden="true"> →</span></h3><p>一次让我重新思考文档维护方式的经历。</p></a>
-        </div>
-      </section>
-      <h2 id="approach">我的工作方式</h2>
-      <p>先弄清楚问题，再做一个足够小的尝试。把事实、推论和已经验证的结果分开记录；有了新证据，就回头修正原来的判断。</p>
-      <p>文章用来整理这些判断，工具用来减少重复步骤。这里也会记录成本和限制，让下一次实践有据可循。</p>
+<SiteLayout title="关于 QIANYI · UI 设计师" description="了解 UI 设计师 QIANYI 的专业领域、职业经历与设计方式。" section="about" bodyClass="about-page">
+  <section class="about-hero">
+    <div class="container showcase-container about-hero-inner">
+      <div class="about-hero-copy"><p class="hero-kicker"><span></span>ABOUT ME / UI DESIGNER</p><h1>你好，我是 QIANYI<span>。</span></h1><p class="about-role">UI 设计师 · 7 年以上设计经验</p><p class="about-intro">专注于移动端、Web 及业务管理系统的界面与体验设计。从内容阅读、汽车出行到美妆零售，我参与过不同业务领域的产品设计，也积累了多个项目从 0 到 1 的实践经验。</p><a class="text-link" href="/work/">看看我的作品 <span aria-hidden="true">→</span></a></div>
+      <div class="about-years" aria-label="7 年以上设计经验，自 2019 年起"><svg class="about-orbit" viewBox="0 0 600 350" aria-hidden="true"><defs><linearGradient id="arc-fill" x1="0" y1="1" x2="0.8" y2="0"><stop stop-color="#c9ffdf" stop-opacity=".6"/><stop offset=".24" stop-color="#9cdbb1" stop-opacity=".23"/><stop offset="1" stop-color="#9cdbb1" stop-opacity="0"/></linearGradient><linearGradient id="arc-line"><stop stop-color="#caffdf" stop-opacity=".8"/><stop offset="1" stop-color="#9cdbb1" stop-opacity="0"/></linearGradient><radialGradient id="arc-glow"><stop stop-color="#e8fff2" stop-opacity=".85"/><stop offset=".22" stop-color="#b8f4d0" stop-opacity=".35"/><stop offset="1" stop-color="#9cdbb1" stop-opacity="0"/></radialGradient></defs><ellipse cx="125" cy="235" rx="100" ry="95" fill="url(#arc-glow)"/><path d="M125 235 C175 110 310 25 600 0 C390 37 275 110 125 235 Z" fill="url(#arc-fill)"/><path d="M90 350 C112 150 260 28 600 0 M0 350 C100 210 245 140 600 165" fill="none" stroke="url(#arc-line)" stroke-width="1"/></svg><span class="about-years-number">07<span>+</span></span><span class="about-years-label">YEARS OF DESIGN</span><span class="about-years-line" aria-hidden="true"></span><span class="about-years-date">2019 — PRESENT</span></div>
     </div>
-  </div>
+  </section>
+  <section class="container showcase-container about-section" aria-labelledby="expertise-title">
+    <div class="about-section-heading"><p class="section-kicker">EXPERTISE / 专业领域</p><h2 id="expertise-title">从界面到体验，<br />让设计回应真实需求。</h2></div>
+    <div class="about-expertise">{expertise.map(([title, description], i) => <article><div class="expertise-marker"><span>0{i + 1}</span><svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{i === 0 ? <><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></> : i === 1 ? <><rect x="2.5" y="4" width="19" height="14" rx="2"/><path d="M2.5 8h19M9 21h6m-3-3v3"/></> : i === 2 ? <><path d="M4 20V13m5 7V9m5 11V5m5 15V2"/><path d="M2 21h20"/></> : <><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></>}</svg></div><h3>{title}</h3><p>{description}</p></article>)}</div>
+  </section>
+  <section class="container showcase-container about-section about-experience" aria-labelledby="experience-title">
+    <div class="about-section-heading"><p class="section-kicker">EXPERIENCE / 职业经历</p><h2 id="experience-title">一路走来，<br />在不同场景中持续探索。</h2><div class="career-particle-ring" aria-hidden="true"><svg viewBox="0 0 340 240"><defs><linearGradient id="particle-ring-shade" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a0c3ae" stop-opacity=".2"/><stop offset=".5" stop-color="#c6ead3" stop-opacity=".7"/><stop offset="1" stop-color="#9cbfa9" stop-opacity=".25"/></linearGradient></defs><g class="particle-ring-spin" fill="none"><ellipse cx="170" cy="120" rx="132" ry="60" stroke="url(#particle-ring-shade)" stroke-width="2" stroke-linecap="round" stroke-dasharray=".1 5"/><ellipse cx="170" cy="120" rx="120" ry="49" stroke="url(#particle-ring-shade)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray=".1 7"/><ellipse cx="170" cy="120" rx="138" ry="66" stroke="#a0c3ae" opacity=".22" stroke-width="1.4" stroke-linecap="round" stroke-dasharray=".1 9"/><circle class="ring-spark" cx="302" cy="120" r="3"/><circle class="ring-spark" cx="104" cy="68" r="2.5"/><circle class="ring-spark" cx="104" cy="172" r="2"/></g></svg></div></div>
+    <div class="about-timeline">{experience.map(([date, company, role, description]) => <article><div class="about-timeline-date">{date}</div><div><h3>{company}</h3><p class="about-timeline-role">{role}</p><p>{description}</p></div></article>)}</div>
+  </section>
+  <section id="approach" class="container showcase-container about-section about-ending" aria-labelledby="approach-title"><div><p class="section-kicker">DESIGN APPROACH / 我的设计方式</p><h2 id="approach-title">让复杂变得清晰，<br />让体验回归自然。</h2><p class="about-steps"><span>理解业务</span><i>→</i><span>梳理结构</span><i>→</i><span>优化体验</span></p></div><div class="contact-panel"><span class="section-kicker">保持联系</span><strong>有项目想聊聊？</strong><a href="mailto:1847587286@qq.com">1847587286@qq.com<span aria-hidden="true">↗</span></a><a href="tel:18656565087">18656565087<span aria-hidden="true">↗</span></a></div></section>
 </SiteLayout>
