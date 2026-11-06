@@ -1,27 +1,5 @@
 @charset "UTF-8";
 :root {
-  color-scheme: light;
-  --bg: #faf9f6;
-  --surface: #ffffff;
-  --soft: #f0f2ed;
-  --hover: #e9eee7;
-  --text: #202b25;
-  --body: #3f4e44;
-  --muted: #5e6c62;
-  --accent: #276345;
-  --accent-cool: #386e78;
-  --line: #dce1d9;
-  --strong-line: #a9baab;
-  --header: rgb(250 249 246 / 96%);
-  --shadow: 0 12px 36px rgb(34 48 38 / 10%);
-  --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
-  font-family: var(--sans);
-  font-synthesis: none;
-  background: var(--bg);
-  color: var(--text);
-}
-:root[data-theme="dark"] {
   color-scheme: dark;
   --bg: #101512;
   --surface: #171e19;
@@ -36,24 +14,12 @@
   --strong-line: #617968;
   --header: rgb(16 21 18 / 96%);
   --shadow: 0 12px 36px rgb(0 0 0 / 20%);
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    color-scheme: dark;
-    --bg: #101512;
-    --surface: #171e19;
-    --soft: #1c251f;
-    --hover: #243129;
-    --text: #e9eee8;
-    --body: #c6d0c7;
-    --muted: #a0afa3;
-    --accent: #9cdbb1;
-    --accent-cool: #9acbd2;
-    --line: #303d33;
-    --strong-line: #617968;
-    --header: rgb(16 21 18 / 96%);
-    --shadow: 0 12px 36px rgb(0 0 0 / 20%);
-  }
+  --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  font-family: var(--sans);
+  font-synthesis: none;
+  background: var(--bg);
+  color: var(--text);
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 104px; }
@@ -89,10 +55,6 @@ code { font-family: var(--mono); font-size: .88em; overflow-wrap: anywhere; }
 .primary-nav a:hover, .primary-nav a[aria-current] { color: var(--text); }
 .primary-nav a[aria-current]::after { content: ""; position: absolute; height: 2px; inset: auto 0 2px; background: var(--accent); }
 .header-controls { display: flex; gap: 20px; align-items: center; }
-.theme-toggle { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 12px; background: transparent; border: 1px solid var(--line); border-radius: 22px; font-size: .8125rem; color: var(--muted); white-space: nowrap; }
-.theme-toggle:hover { background: var(--soft); color: var(--text); border-color: var(--strong-line); }
-.theme-toggle svg { flex-shrink: 0; }
-.theme-icon { display: flex; }
 .menu-button { display: none; }
 .eyebrow { color: var(--muted); font-size: .875rem; margin-bottom: 16px; }
 .hero { padding: 48px 0 32px; }
@@ -278,7 +240,7 @@ code { font-family: var(--mono); font-size: .88em; overflow-wrap: anywhere; }
 .error-page { display: flex; flex-direction: column; justify-content: center; padding-block: 64px; }
 .error-page h1 { font-size: clamp(1.875rem, 4vw, 2.75rem); }
 .error-page p { color: var(--body); margin-bottom: 28px; }
-.motion-enabled .primary-nav, .motion-enabled .theme-toggle, .motion-enabled .work-card { transition: background .16s, border-color .16s, color .16s; }
+.motion-enabled .primary-nav, .motion-enabled .work-card { transition: background .16s, border-color .16s, color .16s; }
 @media (max-width: 1080px) {
   .container { width: calc(100% - 64px); }
   .case-content, .article-layout { column-gap: 32px; grid-template-columns: minmax(0, 1fr) 180px; }
@@ -304,7 +266,6 @@ code { font-family: var(--mono); font-size: .88em; overflow-wrap: anywhere; }
   .site-header.is-scrolled .header-inner { padding-inline: 16px; }
   .brand { font-size: 1.5rem; }
   .header-controls { margin-left: auto; gap: 16px; }
-  .theme-toggle { padding: 8px 10px; font-size: .75rem; gap: 6px; }
   .menu-button { display: inline-flex; gap: 8px; align-items: center; min-height: 44px; padding: 8px 0; background: none; border: 0; font-size: .8125rem; }
   .menu-lines { display: block; width: 15px; height: 8px; border-block: 1px solid var(--text); }
   .menu-button[aria-expanded="true"] .menu-lines { transform: rotate(-45deg); height: 1px; border-bottom: 0; }
