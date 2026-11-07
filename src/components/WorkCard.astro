@@ -1,12 +1,22 @@
 ---
-interface Props { kind: 'lejianel' | 'knowledge' | 'collaboration' }
-const { kind } = Astro.props;
+interface Props { kind: 'lejianel' | 'knowledge' | 'collaboration'; presentation?: 'default' | 'cover' }
+const { kind, presentation = 'default' } = Astro.props;
 const lejianel = kind === 'lejianel';
 const knowledge = kind === 'knowledge';
+// Keep the previous layered version available while the supplied cover is reviewed.
+const useStaticCover = true;
 ---
 <div class="work-item" data-reveal data-reveal-delay={lejianel || knowledge ? 0 : 100}>
   <a class:list={['work-card', lejianel ? 'work-card--lejianel' : knowledge ? 'work-card--knowledge' : 'work-card--collaboration']} href={lejianel ? '/work/lejianel/' : knowledge ? '/work/fuxi-mini/' : '/work/agent-collaboration/'} data-ambient data-palette={lejianel ? 'dune' : knowledge ? 'aurora' : 'ocean'}>
-    {lejianel ? <div class="work-preview work-preview--project">
+    {lejianel && presentation === 'cover' ? <div class:list={['work-list-cover', { 'work-list-cover--static': useStaticCover }]} role="img" aria-label="乐见儿美妆 App 界面项目封面">
+      {useStaticCover ? <img class="work-cover-static" src={`${import.meta.env.BASE_URL}assets/lejianel/portfolio-scene.png`} alt="" loading="lazy" /> : <>
+      <svg class="work-cover-light" viewBox="0 0 1000 625" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="cover-ray" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#b3d3bc" stop-opacity="0"/><stop offset=".48" stop-color="#b3d3bc" stop-opacity=".2"/><stop offset="1" stop-color="#b3d3bc" stop-opacity="0"/></linearGradient></defs><path d="M-30 570 C260 530 650 370 1030 85" fill="none" stroke="url(#cover-ray)" stroke-width="2"/></svg>
+      <div class="work-cover-screen work-cover-detail"><img src="/assets/lejianel/product-detail.png" alt="" loading="lazy" /></div>
+      <div class="work-cover-screen work-cover-member"><img src="/assets/lejianel/member-center.png" alt="" loading="lazy" /></div>
+      <div class="work-cover-screen work-cover-home"><img src="/assets/lejianel/home.png" alt="" loading="lazy" /></div>
+      <svg class="work-cover-foreground" viewBox="0 0 1000 260" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="cover-surface" x1=".3" y1="0" x2=".7" y2="1"><stop stop-color="#30443a"/><stop offset=".38" stop-color="#23362b"/><stop offset="1" stop-color="#18271f"/></linearGradient><linearGradient id="cover-rim" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#a6c6ad" stop-opacity=".14"/><stop offset=".62" stop-color="#a6c6ad" stop-opacity=".4"/><stop offset="1" stop-color="#c4dac6" stop-opacity=".22"/></linearGradient></defs><path d="M0 185 C220 180 410 169 590 129 C760 91 895 37 1000 10 L1000 260 L0 260 Z" fill="url(#cover-surface)"/><path d="M0 185 C220 180 410 169 590 129 C760 91 895 37 1000 10" fill="none" stroke="url(#cover-rim)" stroke-width="2"/></svg>
+      </>}
+    </div> : lejianel ? <div class="work-preview work-preview--project">
       <div class="project-cover-layout">
         <div class="project-cover-device"><div class="project-cover-frame"><img class="project-cover-image" src="/assets/lejianel/cover.png" alt="LEJIANEL 乐见儿美妆 App 作品封面" /></div></div>
         <div class="project-cover-info"><div class="meta-line"><span>移动端 App</span><span>UI 设计</span></div><strong><span>LEJIANEL</span>乐见儿美妆 App</strong><p>统一美妆零售产品的视觉体系与核心页面体验。</p><span class="project-cover-link">查看项目详情 <span aria-hidden="true">→</span></span></div>

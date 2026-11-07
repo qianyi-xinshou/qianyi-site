@@ -11,7 +11,7 @@ export default defineConfig({
     { name: 'mobile', use: { ...devices['iPhone 13'], defaultBrowserType: 'chromium' } },
   ],
   webServer: {
-    command: 'npm run preview -- --port 4322',
+    command: 'npm run preview -- --port 4322 --ignore-lock',
     url: 'http://127.0.0.1:4322', reuseExistingServer: false,
     env: { ASTRO_TELEMETRY_DISABLED: '1' },
   },

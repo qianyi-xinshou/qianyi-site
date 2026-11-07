@@ -16,8 +16,11 @@
   },
   "dependencies": {
     "@astrojs/markdown-remark": "7.3.3",
+    "@astrojs/react": "^7.1.4",
     "astro": "7.4.0",
     "mdast-util-to-string": "4.0.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "unist-util-visit": "5.1.0",
     "yaml": "2.9.1"
   },
@@ -27,6 +30,8 @@
     "@types/hast": "3.0.5",
     "@types/mdast": "4.0.4",
     "@types/node": "24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "parse5": "8.0.1",
     "tsx": "4.23.15",
     "typescript": "6.0.3"

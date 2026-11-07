@@ -38,7 +38,8 @@ test('真实 Astro 构建和开发预览：发布、更新、附件、草稿、�
   checkSite(root);
   const articlePath = path.join(root, 'dist/writing/新文章/index.html');
   assert.match(readFileSync(articlePath, 'utf8'), /独有正文标记/);
-  for (const file of ['index.html', 'writing/index.html']) assert.match(readFileSync(path.join(root, 'dist', file), 'utf8'), /新增文章/);
+  assert.match(readFileSync(path.join(root, 'dist/writing/index.html'), 'utf8'), /新增文章/);
+  assert.doesNotMatch(readFileSync(path.join(root, 'dist/index.html'), 'utf8'), /新增文章/);
   assert.equal(existsSync(path.join(root, 'dist/media/posts/sample.svg')), true);
   assert.equal(existsSync(path.join(root, 'dist/media/posts/unused.pdf')), false);
   assert.equal(existsSync(path.join(root, 'dist/writing/draft/index.html')), false);
@@ -55,7 +56,7 @@ test('真实 Astro 构建和开发预览：发布、更新、附件、草稿、�
   assert.equal(existsSync(path.join(root, 'dist/media/posts/sample.svg')), false);
   assert.match(readFileSync(path.join(root, 'dist/writing/renamed/index.html'), 'utf8'), /更新后/);
 
-  const child = spawn(process.execPath, [cli, 'dev', '--host', '127.0.0.1', '--port', '0'], { cwd: root, env, windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] });
+  const child = spawn(process.execPath, [cli, 'dev', '--host', '127.0.0.1', '--port', '0', '--ignore-lock'], { cwd: root, env, windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] });
   preview = child;
   let output = '';
   child.stdout.on('data', chunk => { output += chunk; });

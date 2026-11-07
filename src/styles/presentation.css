@@ -368,3 +368,25 @@
 @media (prefers-reduced-motion: no-preference) { .expertise-icon { animation: expertise-shimmer 4s ease-in-out infinite; } .about-expertise article:nth-child(2) .expertise-icon { animation-delay: .5s; } .about-expertise article:nth-child(3) .expertise-icon { animation-delay: 1s; } .about-expertise article:nth-child(4) .expertise-icon { animation-delay: 1.5s; } @keyframes expertise-shimmer { 0%, 100% { color: #91afa0; filter: drop-shadow(0 0 0 transparent); } 50% { color: #e8fff2; filter: drop-shadow(0 0 5px rgba(173, 236, 199, .7)); } } }
 @media (max-width: 800px) { .about-hero-inner { grid-template-columns: 1fr; gap: 20px; padding-block: 56px 36px; } .about-years { min-height: 260px; } .about-expertise { grid-template-columns: repeat(2, minmax(0, 1fr)); } .about-experience, .about-ending { grid-template-columns: 1fr; gap: 36px; } .about-section { padding-block: 64px; } }
 @media (max-width: 480px) { .about-expertise { grid-template-columns: 1fr; gap: 0; } .about-expertise h3 { margin-top: 12px; } .about-timeline article { grid-template-columns: 1fr; gap: 10px; } .about-years { min-height: 220px; } .about-section { padding-block: 48px; } }
+.work-hero { display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 24px; }
+.work-hero-copy { min-width: 0; }
+.work-hero-visual { min-width: 0; height: 320px; }
+.work-page .work-hero { border-bottom: 1px solid var(--line); }
+.work-page .work-category-nav { border-bottom: 0; }
+.work-page .work-list-cover { position: relative; isolation: isolate; aspect-ratio: 16 / 10; overflow: hidden; background: radial-gradient(ellipse 48% 45% at 51% 46%, #2c3c32 0%, #1d2a22 60%, #15201a 100%); border-bottom: 1px solid var(--line); }
+.work-page .work-list-cover--static { aspect-ratio: 1599 / 984; background: #11241d; }
+.work-page .work-cover-static { display: block; width: 100%; height: 100%; object-fit: contain; }
+.work-page .work-cover-light { position: absolute; z-index: 0; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.work-page .work-cover-screen { position: absolute; z-index: 1; width: 26%; height: 115%; top: 22%; overflow: hidden; border: 2px solid #718176; border-radius: clamp(8px, 1.5vw, 18px); background: #f8f5f2; box-shadow: -4px 12px 22px rgb(0 0 0 / 48%), 0 0 0 1px rgb(0 0 0 / 65%), 0 0 8px rgb(181 211 187 / 12%); }
+.work-page .work-cover-detail::after, .work-page .work-cover-member::after { content: ''; position: absolute; inset: 0; background: rgb(15 27 20 / 10%); pointer-events: none; }
+.work-page .work-cover-screen img { display: block; width: 100%; height: auto; max-width: none; }
+.work-page .work-cover-detail { left: 17%; transform: rotate(-9deg); }
+.work-page .work-cover-member { right: 14%; top: 23%; transform: rotate(10deg); }
+.work-page .work-cover-home { z-index: 2; width: 32%; height: 130%; top: 6%; left: 34.5%; transform: rotate(4deg); border-color: #9ea99f; box-shadow: -5px 14px 25px rgb(0 0 0 / 58%), 0 0 0 1px rgb(0 0 0 / 70%), 1px -1px 9px rgb(190 224 198 / 18%); }
+.work-page .work-cover-foreground { position: absolute; z-index: 3; inset: auto 0 -2px; width: 100%; height: calc(30% + 2px); pointer-events: none; filter: drop-shadow(0 -4px 8px rgb(0 0 0 / 25%)); }
+@media (max-width: 700px) { .work-page .work-cover-screen { box-shadow: -3px 7px 14px rgb(0 0 0 / 40%); } .work-page .work-cover-home { box-shadow: -3px 8px 16px rgb(0 0 0 / 50%); } .work-page .work-cover-foreground { filter: none; } }
+.work-page .work-card--lejianel { transition: transform .22s ease, border-color .22s ease; }
+.work-page .work-card--lejianel:hover { border-color: var(--strong-line); box-shadow: none; }
+.work-page .work-card--lejianel .card-link > span { display: inline-block; transition: transform .22s ease; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) { .motion-enabled .work-page .work-card--lejianel:hover { transform: translateY(-4px); } .motion-enabled .work-page .work-card--lejianel:hover .card-link > span { transform: translateX(4px); } }
+@media (max-width: 700px) { .work-hero { grid-template-columns: 1fr; gap: 8px; } .work-hero-visual { height: 320px; } .js .work-page .site-header.is-scrolled .primary-nav { left: -10px; right: -10px; } }
