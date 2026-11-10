@@ -1,0 +1,60 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+const assets = `${import.meta.env.BASE_URL}assets/lejianel-dashboard/`;
+---
+<SiteLayout title="LEJIANEL｜全国门店经营数据大屏 · QIANYI" description="LEJIANEL 全国门店经营数据大屏的界面与数据可视化设计。" section="work" bodyClass="project-page dashboard-project-page">
+  <div class="container showcase-container">
+    <nav class="breadcrumb" aria-label="面包屑"><a href="/work/#data-visualization">大屏可视化</a><span>/</span>LEJIANEL 全国门店经营数据大屏</nav>
+    <header class="detail-header project-header">
+      <p class="eyebrow">大屏可视化 · UI 设计 · 美妆零售</p>
+      <h1>LEJIANEL<br />让经营数据清晰呈现。</h1>
+      <p class="lead">以全国门店经营信息为主题，将销售、会员与库存数据整合到同一界面，呈现从整体概览到具体状态的信息层级。</p>
+    </header>
+    <dl class="case-facts"><div><dt>项目类型</dt><dd>数据可视化大屏</dd></div><div><dt>担任角色</dt><dd>UI 设计</dd></div><div><dt>展示范围</dt><dd>销售 · 会员 · 库存</dd></div></dl>
+
+    <section class="dashboard-intro" aria-labelledby="dashboard-overview-title">
+      <div class="dashboard-heading"><p class="eyebrow">整体界面</p><h2 id="dashboard-overview-title">一屏呈现门店经营信息</h2><p>从顶部核心指标到区域销售、品牌会员与库存状态，以清晰的分区组织信息。</p></div>
+      <figure class="dashboard-full"><a href={`${assets}dashboard.jpg`}><img src={`${assets}dashboard.jpg`} alt="LEJIANEL 全国门店经营数据大屏完整界面，包含销售地图、会员分布和库存状态" /></a><figcaption>完整界面 · 点击图片可查看大图。画面中的数据仅供演示。</figcaption></figure>
+    </section>
+
+    <section class="dashboard-sections" aria-labelledby="dashboard-sections-title">
+      <div class="dashboard-heading"><p class="eyebrow">功能拆解</p><h2 id="dashboard-sections-title">从概览到细节</h2><p>按信息的用途拆分界面，展示不同数据类型的呈现方式。</p></div>
+      <article class="dashboard-part dashboard-part--overview"><div class="dashboard-copy"><p class="eyebrow">01 / 经营数据总览</p><h3>先看到关键指标</h3><p>将销售额、订单数、客单价、新增会员和库存预警集中在顶部，通过数字、图标和变化趋势建立清晰的阅读顺序。</p></div><div class="dashboard-metrics"><figure><a href={`${assets}overview-sales.jpg`}><img src={`${assets}overview-sales.jpg`} alt="销售额和订单数指标" loading="lazy" /></a></figure><figure><a href={`${assets}overview-members.jpg`}><img src={`${assets}overview-members.jpg`} alt="客单价、会员和库存预警指标" loading="lazy" /></a></figure></div></article>
+      <article class="dashboard-part"><div class="dashboard-copy"><p class="eyebrow">02 / 销售与区域表现</p><h3>从全国分布看到区域变化</h3><p>以地图呈现销售分布，结合区域排行、销售对比与趋势图，组织不同维度的销售数据。</p></div><figure><a href={`${assets}sales.jpg`}><img src={`${assets}sales.jpg`} alt="全国销售地图、区域排行及销售图表" loading="lazy" /></a></figure></article>
+      <article class="dashboard-part"><div class="dashboard-copy"><p class="eyebrow">03 / 品牌与会员分析</p><h3>让构成和占比更直观</h3><p>以颜色区分品牌销售占比，并用统一的会员卡片展示不同等级的人数与比例。</p></div><figure><a href={`${assets}members.jpg`}><img src={`${assets}members.jpg`} alt="品牌销售占比与会员等级分布" loading="lazy" /></a></figure></article>
+      <article class="dashboard-part"><div class="dashboard-copy"><p class="eyebrow">04 / 库存状态与风险</p><h3>区分状态，突出预警</h3><p>集中展示库存风险、热销商品库存和门店库存健康度，使用不同颜色区分正常、偏低与预警状态。</p></div><figure><a href={`${assets}inventory.jpg`}><img src={`${assets}inventory.jpg`} alt="库存风险预警、商品库存状态和门店库存健康度" loading="lazy" /></a></figure></article>
+    </section>
+    <section class="dashboard-notes" aria-labelledby="dashboard-design-title"><p class="eyebrow">视觉设计</p><h2 id="dashboard-design-title">让数据在同一套视觉语言中表达</h2><p>以深蓝色为界面基础，结合线性图标、清晰的数据字体与状态色，保持不同图表和信息模块的视觉一致性。</p><a class="text-link" href="/work/#data-visualization">返回大屏可视化 <span aria-hidden="true">→</span></a></section>
+  </div>
+</SiteLayout>
+
+<style>
+  .dashboard-intro { padding: 48px 0 72px; border-top: 1px solid var(--line); }
+  .dashboard-heading { max-width: 650px; margin-bottom: 28px; }
+  .dashboard-heading h2, .dashboard-notes h2 { font-size: clamp(1.625rem, 3vw, 2.25rem); letter-spacing: -.04em; margin-bottom: 14px; }
+  .dashboard-heading > p:last-child, .dashboard-copy > p:last-child, .dashboard-notes > p:not(.eyebrow) { color: var(--body); line-height: 1.9; }
+  .dashboard-full, .dashboard-part figure { margin: 0; }
+  .dashboard-full img, .dashboard-part img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; background: #001329; }
+  .dashboard-full figcaption { color: var(--muted); font-size: .8125rem; margin-top: 12px; }
+  .dashboard-sections { padding: 0 0 32px; }
+  .dashboard-part { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(24px, 5vw, 72px); align-items: center; padding: 48px 0; border-top: 1px solid var(--line); }
+  .dashboard-part--overview { display: block; }
+  .dashboard-part--overview .dashboard-copy { max-width: 650px; margin-bottom: 24px; }
+  .dashboard-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .dashboard-copy h3 { font-size: clamp(1.25rem, 2.2vw, 1.75rem); margin-bottom: 12px; }
+  .dashboard-copy > p:last-child { margin-bottom: 0; }
+  .dashboard-part figure { display: flex; justify-content: center; }
+  .dashboard-part figure img { max-width: 100%; }
+  .dashboard-part:not(.dashboard-part--overview) figure img { width: auto; max-height: 580px; }
+  .dashboard-notes { padding: 48px 0 80px; border-top: 1px solid var(--line); }
+  .dashboard-notes > p:not(.eyebrow) { max-width: 650px; margin-bottom: 24px; }
+  @media (max-width: 700px) {
+    :global(.js .dashboard-project-page .site-header.is-scrolled .primary-nav) { left: -10px; right: -10px; }
+    .dashboard-intro { padding: 36px 0 48px; }
+    .dashboard-part { grid-template-columns: 1fr; gap: 24px; padding: 36px 0; }
+    .dashboard-part--overview { display: block; }
+    .dashboard-metrics { grid-template-columns: 1fr; }
+    .dashboard-part:not(.dashboard-part--overview) figure img { max-height: none; }
+    .dashboard-notes { padding: 36px 0 64px; }
+  }
+</style>
