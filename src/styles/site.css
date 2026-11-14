@@ -55,6 +55,9 @@ code { font-family: var(--mono); font-size: .88em; overflow-wrap: anywhere; }
 .primary-nav a:hover, .primary-nav a[aria-current] { color: var(--text); }
 .primary-nav a[aria-current]::after { content: ""; position: absolute; height: 2px; inset: auto 0 2px; background: var(--accent); }
 .header-controls { display: flex; gap: 20px; align-items: center; }
+.language-placeholder { display: inline-flex; align-items: center; gap: 7px; min-height: 38px; padding: 0 13px; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--muted); font: inherit; font-size: .8125rem; cursor: default; }
+.language-placeholder span:first-child { color: var(--text); }
+.language-placeholder span:nth-child(2) { opacity: .45; }
 .menu-button { display: none; }
 .eyebrow { color: var(--muted); font-size: .875rem; margin-bottom: 16px; }
 .hero { padding: 48px 0 32px; }
@@ -266,6 +269,7 @@ code { font-family: var(--mono); font-size: .88em; overflow-wrap: anywhere; }
   .site-header.is-scrolled .header-inner { padding-inline: 16px; }
   .brand { font-size: 1.5rem; }
   .header-controls { margin-left: auto; gap: 16px; }
+  .language-placeholder { min-height: 34px; padding-inline: 11px; }
   .menu-button { display: inline-flex; gap: 8px; align-items: center; min-height: 44px; padding: 8px 0; background: none; border: 0; font-size: .8125rem; }
   .menu-lines { display: block; width: 15px; height: 8px; border-block: 1px solid var(--text); }
   .menu-button[aria-expanded="true"] .menu-lines { transform: rotate(-45deg); height: 1px; border-bottom: 0; }

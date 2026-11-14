@@ -14,6 +14,7 @@ const navigation = [
       {navigation.map(item => <a href={item.href} aria-current={section === item.section ? (Astro.url.pathname === item.href ? 'page' : 'location') : undefined}>{item.label}</a>)}
     </nav>
     <div class="header-controls">
+      <button class="language-placeholder" type="button" disabled aria-label="当前语言为中文，英文版尚未开放" title="英文版尚未开放"><span>中</span><span aria-hidden="true">/</span><span lang="en">EN</span></button>
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>菜单<span aria-hidden="true" class="menu-lines"></span></button>
     </div>
   </div>

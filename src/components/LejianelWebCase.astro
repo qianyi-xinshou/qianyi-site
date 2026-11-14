@@ -1,0 +1,116 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+interface Props { kind: 'website' | 'shop' }
+const { kind } = Astro.props;
+const isWebsite = kind === 'website';
+const assets = `${import.meta.env.BASE_URL}assets/lejianel-web/`;
+const caseInfo = isWebsite ? {
+  name: 'LEJIANEL｜品牌官网', category: '品牌官网', subtitle: '让品牌与线下体验，\n有更清晰的表达。',
+  introduction: '围绕品牌介绍、门店体验与招商合作，组织官网内容与视觉呈现，让不同访问目的都有清晰的入口。',
+  scope: '品牌 · 门店 · 招商 · 资讯', cover: 'website-home',
+  sections: [
+    { number: '01', label: 'HOME', title: '从首页认识 LEJIANEL', description: '将品牌形象、门店体验、合作入口与公司动态组织在首页，通过清晰的内容层次引导浏览。', images: [{ file: 'website-home', name: '官网首页' }] },
+    { number: '02', label: 'STORE EXPERIENCE', title: '把线下门店体验带到线上', description: '从门店环境、到店服务到具体门店信息，帮助访客了解线下空间与服务。', images: [{ file: 'stores', name: '门店体验' }, { file: 'store-detail', name: '门店详情' }] },
+    { number: '03', label: 'PARTNERSHIP', title: '让合作信息更容易了解', description: '围绕合作模式、平台支持和咨询流程，梳理招商页面的信息顺序，并展示咨询提交后的状态。', images: [{ file: 'cooperation', name: '招商加盟' }, { file: 'cooperation-success', name: '咨询提交成功' }] },
+    { number: '04', label: 'BRAND CONTENT', title: '持续呈现品牌故事', description: '以资讯列表、文章详情和品牌介绍页面，承载品牌信息与动态内容。', images: [{ file: 'news', name: '公司动态' }, { file: 'news-detail', name: '动态详情' }, { file: 'about', name: '关于 LEJIANEL' }] },
+  ],
+  relatedHref: '/work/lejianel-shop/', relatedName: 'LEJIANEL 美妆商城', relatedDescription: '从品牌官网进入商城，继续探索商品与购物体验。',
+} : {
+  name: 'LEJIANEL｜美妆商城', category: '网页端商城', subtitle: '从发现好物到下单，\n让购物过程更清晰。',
+  introduction: '作为品牌官网中的商城入口，围绕分类、品牌、商品和订单等场景，呈现连贯的网页端购物路径。',
+  scope: '商品 · 品牌 · 购物 · 订单', cover: 'shop-home',
+  sections: [
+    { number: '01', label: 'SHOP HOME', title: '从商城首页开始探索', description: '将分类、热门品牌、新品与会员入口组织在同一页面，让用户按不同需求进入浏览。', images: [{ file: 'shop-home', name: '商城首页' }] },
+    { number: '02', label: 'DISCOVER', title: '用分类和筛选找到心仪商品', description: '通过商品分类、品牌馆与商品列表，展示从发现品牌到缩小商品范围的浏览路径。', images: [{ file: 'shop-category', name: '商品分类' }, { file: 'shop-brands', name: '品牌馆' }, { file: 'shop-list', name: '商品列表与筛选' }] },
+    { number: '03', label: 'PRODUCT DETAIL', title: '在详情页了解商品', description: '以商品图片、规格、价格与购买入口为重点，同时呈现商品介绍和用户评价。', images: [{ file: 'shop-detail', name: '商品详情' }] },
+    { number: '04', label: 'PURCHASE FLOW', title: '从购物车到订单', description: '按购物车、结算、订单列表和订单详情的顺序，展示购物过程中的信息与状态。', images: [{ file: 'shop-cart', name: '购物车' }, { file: 'shop-checkout', name: '订单结算' }, { file: 'shop-orders', name: '我的订单' }, { file: 'shop-order-detail', name: '订单详情' }] },
+  ],
+  relatedHref: '/work/lejianel-website/', relatedName: 'LEJIANEL 品牌官网', relatedDescription: '回到品牌官网，了解门店体验与合作信息。',
+};
+const highlights: Record<string, { file: string; title: string; description: string }> = isWebsite ? {
+  '01': { file: 'highlight-home', title: '品牌与门店入口', description: '以并列的服务特点与图文模块，连接品牌介绍和线下门店体验。' },
+  '03': { file: 'highlight-cooperation', title: '合作模式与支持', description: '将两种合作模式和平台支持分区呈现，帮助访客浏览关键信息。' },
+} : {
+  '02': { file: 'highlight-filter', title: '筛选与商品浏览', description: '将筛选条件与商品卡片并排组织，方便对照商品图片、信息和价格。' },
+  '03': { file: 'highlight-product', title: '商品信息与购买入口', description: '在商品详情的首要区域集中展示图片、价格、规格和购买操作。' },
+};
+---
+<SiteLayout title={`${caseInfo.name} · QIANYI`} description={caseInfo.introduction} section="work" bodyClass="project-page lejianel-web-page">
+  <div class="container showcase-container">
+    <nav class="breadcrumb" aria-label="面包屑"><a href="/work/#web-design">网页端界面设计</a><span>/</span>{caseInfo.name}</nav>
+    <header class="web-case-header">
+      <p class="eyebrow">WEB DESIGN / {isWebsite ? 'BRAND WEBSITE' : 'ONLINE STORE'}</p>
+      <h1>{caseInfo.name}</h1>
+      <p class="web-case-statement">{caseInfo.subtitle}</p>
+      <p class="web-case-introduction">{caseInfo.introduction}</p>
+      <dl class="web-case-facts"><div><dt>项目类型</dt><dd>{caseInfo.category}</dd></div><div><dt>设计方向</dt><dd>网页 UI 设计</dd></div><div><dt>展示范围</dt><dd>{caseInfo.scope}</dd></div></dl>
+    </header>
+    <div class="web-case-hero"><div class="browser-bar" aria-hidden="true"><span></span><span></span><span></span><small>LEJIANEL / {isWebsite ? 'BRAND WEBSITE' : 'ONLINE STORE'}</small></div><div class="hero-image"><img src={`${assets}${caseInfo.cover}.jpg`} alt={`${caseInfo.name}首页设计稿`} /></div></div>
+    <p class="web-case-caption">页面展示基于设计稿 · 点击下方图片可查看完整大图</p>
+    <div class="web-case-sections">
+      {caseInfo.sections.map(section => <section class="web-case-section" aria-labelledby={`section-${section.number}`}>
+        <div class="web-case-section-heading"><p class="section-index">{section.number} <span>/ {section.label}</span></p><div><h2 id={`section-${section.number}`}>{section.title}</h2><p>{section.description}</p></div></div>
+        <div class:list={['web-case-gallery', { 'web-case-gallery--single': section.images.length === 1 }]}>
+          {section.images.map(item => <figure><a href={`${assets}${item.file}.jpg`} target="_blank" rel="noopener noreferrer" aria-label={`查看${item.name}完整设计稿（新窗口）`}><img src={`${assets}${item.file}.jpg`} alt={`${item.name}设计稿`} loading="lazy" /></a><figcaption><span>{item.name}</span><span>查看大图 ↗</span></figcaption></figure>)}
+        </div>
+        {highlights[section.number] && <div class="web-case-highlight"><div><p class="section-index">设计细节 / DETAIL</p><h3>{highlights[section.number].title}</h3><p>{highlights[section.number].description}</p></div><img src={`${assets}${highlights[section.number].file}.jpg`} alt={`${highlights[section.number].title}界面局部`} loading="lazy" /></div>}
+      </section>)}
+    </div>
+    <aside class="related-case"><div><p class="eyebrow">相关作品</p><h2>{caseInfo.relatedName}</h2><p>{caseInfo.relatedDescription}</p></div><a class="text-link" href={caseInfo.relatedHref}>查看项目 <span aria-hidden="true">→</span></a></aside>
+    <a class="text-link web-case-back" href="/work/#web-design">返回网页端作品 <span aria-hidden="true">→</span></a>
+  </div>
+</SiteLayout>
+
+<style>
+  .web-case-header { max-width: 850px; padding: 14px 0 54px; }
+  .web-case-header h1 { margin-bottom: 16px; color: var(--muted); font-size: clamp(.9rem, 1.5vw, 1.1rem); font-weight: 500; }
+  .web-case-statement { white-space: pre-line; margin: 0 0 22px; color: var(--text); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 650; line-height: 1.28; letter-spacing: -.04em; }
+  .web-case-introduction { max-width: 650px; color: var(--body); line-height: 1.9; }
+  .web-case-facts { display: flex; flex-wrap: wrap; gap: 20px 56px; margin: 36px 0 0; }
+  .web-case-facts div { display: grid; gap: 7px; }
+  .web-case-facts dt { color: var(--muted); font-size: .75rem; }
+  .web-case-facts dd { margin: 0; font-size: .875rem; }
+  .web-case-hero { overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: #f9f5f2; }
+  .browser-bar { display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 15px; background: #181f1b; }
+  .browser-bar span { width: 6px; height: 6px; border-radius: 50%; background: #66756a; }
+  .browser-bar small { margin-left: auto; color: #9ba99e; font-size: .625rem; letter-spacing: .1em; }
+  .hero-image { aspect-ratio: 16 / 8; overflow: hidden; }
+  .hero-image img { display: block; width: 100%; height: auto; }
+  .web-case-caption { margin: 12px 0 0; color: var(--muted); font-size: .8125rem; }
+  .web-case-sections { padding-top: 72px; }
+  .web-case-section { padding: 56px 0 72px; border-top: 1px solid var(--line); }
+  .web-case-section-heading { display: grid; grid-template-columns: minmax(155px, .45fr) minmax(0, 1fr); gap: 24px; margin-bottom: 32px; }
+  .section-index { color: #d59b6c; font-size: .75rem; letter-spacing: .08em; }
+  .section-index span { color: var(--muted); }
+  .web-case-section-heading h2 { margin: 0 0 12px; font-size: clamp(1.5rem, 2.5vw, 2rem); letter-spacing: -.03em; }
+  .web-case-section-heading div > p { max-width: 600px; margin: 0; color: var(--body); line-height: 1.85; }
+  .web-case-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 32px 24px; }
+  .web-case-gallery--single { grid-template-columns: minmax(0, 760px); justify-content: center; }
+  .web-case-gallery figure { margin: 0; min-width: 0; }
+  .web-case-gallery a { display: block; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: #f8f5f3; }
+  .web-case-gallery img { display: block; width: 100%; height: auto; }
+  .web-case-gallery figcaption { display: flex; justify-content: space-between; gap: 12px; margin-top: 12px; color: var(--muted); font-size: .8125rem; }
+  .web-case-highlight { display: grid; grid-template-columns: minmax(0, .65fr) minmax(0, 1.35fr); align-items: center; gap: 32px; margin-top: 56px; padding: clamp(22px, 3vw, 36px); border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+  .web-case-highlight h3 { margin: 0 0 12px; font-size: 1.125rem; }
+  .web-case-highlight div > p:last-child { margin: 0; color: var(--muted); font-size: .875rem; line-height: 1.8; }
+  .web-case-highlight img { display: block; width: 100%; height: auto; border-radius: 8px; }
+  .related-case { display: flex; align-items: end; justify-content: space-between; gap: 24px; padding: 36px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+  .related-case h2 { margin: 0 0 10px; font-size: 1.4rem; }
+  .related-case p:last-child { margin: 0; color: var(--muted); line-height: 1.7; }
+  .related-case .text-link { flex: none; }
+  .web-case-back { display: inline-block; margin: 40px 0 72px; }
+  @media (max-width: 700px) {
+    :global(.js .lejianel-web-page .site-header.is-scrolled .primary-nav) { left: -10px; right: -10px; }
+    .web-case-header { padding: 6px 0 36px; }
+    .web-case-facts { gap: 18px 28px; }
+    .hero-image { aspect-ratio: 16 / 10; }
+    .web-case-sections { padding-top: 48px; }
+    .web-case-section { padding: 40px 0 48px; }
+    .web-case-section-heading { grid-template-columns: 1fr; gap: 8px; margin-bottom: 24px; }
+    .web-case-gallery { grid-template-columns: 1fr; gap: 28px; }
+    .web-case-highlight { grid-template-columns: 1fr; gap: 20px; margin-top: 36px; }
+    .related-case { display: block; padding: 24px; }
+    .related-case .text-link { display: inline-block; margin-top: 20px; }
+    .web-case-back { margin-bottom: 56px; }
+  }
+</style>
