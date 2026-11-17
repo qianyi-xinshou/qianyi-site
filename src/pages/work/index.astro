@@ -2,11 +2,16 @@
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import WorkCard from '../../components/WorkCard.astro';
 import WorkSpiral from '../../components/WorkSpiral';
+import { posterCases } from '../../data/lejianel-posters';
+const posterMockups: Record<string, string> = {
+  opening: 'opening-sign',
+  promotion: 'sale-front',
+};
 ---
-<SiteLayout title="作品与实践 · QIANYI" description="按设计类型整理的界面设计、视觉设计与交互体验作品。" section="work" bodyClass="work-page">
+<SiteLayout title="作品与实践 · QIANYI" description="按设计类型整理的界面设计与视觉设计作品。" section="work" bodyClass="work-page">
   <div class="container showcase-container">
     <div class="work-hero"><div class="work-hero-copy"><header class="page-intro"><p class="section-kicker">动手做过的事</p><h1>作品与实践</h1><p>按设计类型整理作品，让你更快找到感兴趣的项目。</p></header>
-    <nav class="work-category-nav" aria-label="作品分类"><a href="#mobile-app">移动端 App</a><a href="#web-design">网页端界面</a><a href="#dashboard">后台设计</a><a href="#data-visualization">大屏可视化</a><a href="#poster">海报设计</a><a href="#interaction">交互体验</a></nav>
+    <nav class="work-category-nav" aria-label="作品分类"><a href="#mobile-app">移动端 App</a><a href="#web-design">网页端界面</a><a href="#dashboard">后台设计</a><a href="#data-visualization">大屏可视化</a><a href="#poster">海报设计</a></nav>
     </div><div class="work-hero-visual"><WorkSpiral client:visible base={import.meta.env.BASE_URL} /></div></div>
     <div class="work-categories">
       <section class="work-category" id="mobile-app" aria-labelledby="mobile-app-title"><div class="work-category-heading"><div><p class="section-kicker">01 / Mobile App</p><h2 id="mobile-app-title">移动端 App 设计</h2></div><p>面向 iOS 与 Android 的界面和使用体验。</p></div><div class="work-grid"><WorkCard kind="lejianel" presentation="cover" /></div></section>
@@ -16,8 +21,9 @@ import WorkSpiral from '../../components/WorkSpiral';
       </div></section>
       <section class="work-category" id="dashboard" aria-labelledby="dashboard-title"><div class="work-category-heading"><div><p class="section-kicker">03 / Dashboard</p><h2 id="dashboard-title">后台设计</h2></div><p>复杂信息、数据状态与管理流程梳理。</p></div><div class="category-empty">后台设计作品正在整理中。</div></section>
       <section class="work-category" id="data-visualization" aria-labelledby="visualization-title"><div class="work-category-heading"><div><p class="section-kicker">04 / Data Visualization</p><h2 id="visualization-title">大屏可视化</h2></div><p>让复杂的数据清晰呈现，让关键信息一目了然。</p></div><div class="work-grid"><div class="work-item"><a class="work-card data-work-card" href="/work/lejianel-dashboard/"><div class="data-work-cover"><img src={`${import.meta.env.BASE_URL}assets/lejianel-dashboard/dashboard.jpg`} alt="LEJIANEL 全国门店经营数据大屏" loading="lazy" /></div><div class="work-card-body"><div class="meta-line"><span>大屏可视化</span><span>UI 设计</span></div><h3>LEJIANEL｜全国门店经营数据大屏</h3><p>围绕销售、会员与库存信息，呈现门店经营数据的整体视图。</p><span class="card-link">查看项目详情 <span aria-hidden="true">→</span></span></div></a></div></div></section>
-      <section class="work-category" id="poster" aria-labelledby="poster-title"><div class="work-category-heading"><div><p class="section-kicker">05 / Poster</p><h2 id="poster-title">海报设计</h2></div><p>活动视觉、宣传画面与品牌传播设计。</p></div><div class="category-empty">海报作品正在整理中。</div></section>
-      <section class="work-category" id="interaction" aria-labelledby="interaction-title"><div class="work-category-heading"><div><p class="section-kicker">06 / Interaction</p><h2 id="interaction-title">交互体验优化</h2></div><p>信息架构、使用流程与关键任务梳理。</p></div><div class="category-empty">交互体验作品正在整理中。</div></section>
+      <section class="work-category" id="poster" aria-labelledby="poster-title"><div class="work-category-heading"><div><p class="section-kicker">05 / Poster</p><h2 id="poster-title">海报设计</h2></div><p>活动视觉、宣传画面与品牌传播设计。</p></div><div class="work-grid">{posterCases.map(item => <div class="work-item"><a class="work-card poster-work-card" href={`/work/posters/${item.slug}/`}><div class={`poster-work-cover poster-work-cover--${item.slug}`} style={`--poster-scene: url('${import.meta.env.BASE_URL}assets/lejianel-posters/mockup-${item.slug}.jpg')`}>
+        <img class="poster-mockup" src={`${import.meta.env.BASE_URL}assets/lejianel-posters/${posterMockups[item.slug]}.jpg`} alt={`${item.title}设计在场景中的展示效果`} loading="lazy" />
+      </div><div class="work-card-body"><div class="meta-line"><span>{item.accent}</span><span>海报设计</span></div><h3>{item.title}</h3><p>{item.description}</p><span class="card-link">查看项目详情 <span aria-hidden="true">→</span></span></div></a></div>)}</div></section>
     </div>
   </div>
 </SiteLayout>
@@ -29,4 +35,10 @@ import WorkSpiral from '../../components/WorkSpiral';
   .web-work-cover { aspect-ratio: 16 / 10; overflow: hidden; background: #f8f4f1; border-bottom: 1px solid var(--line); }
   .web-work-cover img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
   .web-work-card .meta-line > span:first-child, .web-work-card .card-link { color: #d58c4d; }
+  .poster-work-cover { position: relative; isolation: isolate; aspect-ratio: 16 / 10; overflow: hidden; background: #17221c var(--poster-scene) center / cover no-repeat; border-bottom: 1px solid var(--line); }
+  .poster-mockup { position: absolute; display: block; max-width: none; width: auto; transform: translateX(-50%); }
+  .poster-work-cover--opening::before { content: ''; position: absolute; left: 37.35%; top: 6.1%; width: 25.3%; height: 62.1%; background: #ead6ba; }
+  .poster-work-cover--opening .poster-mockup { left: 50%; top: 6.1%; height: 62.1%; }
+  .poster-work-cover--promotion .poster-mockup { left: 49.6%; top: 9.3%; height: 81.5%; }
+  .poster-work-card .meta-line > span:first-child, .poster-work-card .card-link { color: #d9a777; }
 </style>

@@ -1,0 +1,66 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { posterCases, type PosterCase } from '../../../data/lejianel-posters';
+
+export function getStaticPaths() {
+  return posterCases.map(item => ({ params: { slug: item.slug }, props: { item } }));
+}
+interface Props { item: PosterCase }
+const { item } = Astro.props;
+const assets = `${import.meta.env.BASE_URL}assets/lejianel-posters/`;
+---
+<SiteLayout title={`${item.title} · QIANYI`} description={item.description} section="work" bodyClass="project-page poster-case-page">
+  <div class="container showcase-container">
+    <nav class="breadcrumb" aria-label="面包屑"><a href="/work/#poster">海报设计</a><span>/</span>{item.title}</nav>
+    <header class="poster-hero">
+      <div class="poster-hero-copy"><p class="eyebrow">POSTER DESIGN / {item.accent}</p><h1>{item.title}</h1><p class="poster-lead">{item.description}</p><dl class="poster-facts"><div><dt>项目类型</dt><dd>视觉设计</dd></div><div><dt>展示内容</dt><dd>{item.accent} · 宣传画面</dd></div></dl><a class="text-link" href="#poster-gallery">查看作品 <span aria-hidden="true">↓</span></a></div>
+      <div class="poster-hero-stage"><img src={`${assets}${item.cover}.jpg`} alt={`${item.title}主视觉`} /></div>
+    </header>
+    <div class="poster-gallery" id="poster-gallery">
+      {item.groups.map((group, index) => <section class="poster-section" aria-labelledby={`poster-section-${index}`}>
+        <div class="poster-heading"><p class="poster-number">{group.label}</p><div><h2 id={`poster-section-${index}`}>{group.title}</h2><p>{group.description}</p></div></div>
+        <div class:list={['poster-grid', { 'poster-grid--single': group.images.length === 1 }]}>
+          {group.images.map(image => <figure><a href={`${assets}${image.file}.jpg`} target="_blank" rel="noopener noreferrer" aria-label={`查看${image.title}大图（新窗口）`}><img src={`${assets}${image.file}.jpg`} alt={`${image.title}设计画面`} loading="lazy" /></a><figcaption><span>{image.title}</span><span>查看大图 ↗</span></figcaption></figure>)}
+        </div>
+      </section>)}
+    </div>
+    <p class="poster-note">以上画面根据现有设计稿整理展示。</p>
+    <a class="text-link poster-back" href="/work/#poster">返回海报作品 <span aria-hidden="true">→</span></a>
+  </div>
+</SiteLayout>
+
+<style>
+  .poster-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: center; padding: 16px 0 72px; }
+  .poster-hero-copy h1 { max-width: 520px; margin: 0 0 22px; font-size: clamp(2rem, 3.8vw, 3.5rem); line-height: 1.25; letter-spacing: -.04em; }
+  .poster-lead { max-width: 460px; color: var(--body); font-size: 1rem; line-height: 1.9; }
+  .poster-facts { display: flex; flex-wrap: wrap; gap: 20px 50px; margin: 32px 0; }
+  .poster-facts div { display: grid; gap: 7px; }
+  .poster-facts dt { color: var(--muted); font-size: .75rem; }
+  .poster-facts dd { margin: 0; font-size: .875rem; }
+  .poster-hero-stage { display: flex; justify-content: center; align-items: center; min-height: 500px; padding: 28px; border: 1px solid var(--line); border-radius: 16px; background: #24221e; }
+  .poster-hero-stage img { display: block; max-width: 100%; width: auto; height: auto; max-height: 520px; box-shadow: 0 15px 40px #0006; }
+  .poster-gallery { scroll-margin-top: 100px; }
+  .poster-section { padding: 56px 0 72px; border-top: 1px solid var(--line); }
+  .poster-heading { display: grid; grid-template-columns: minmax(145px, .45fr) minmax(0, 1fr); gap: 24px; margin-bottom: 32px; }
+  .poster-number { color: #d9a777; font-size: .75rem; letter-spacing: .08em; }
+  .poster-heading h2 { margin: 0 0 12px; font-size: clamp(1.5rem, 2.5vw, 2rem); }
+  .poster-heading div > p { max-width: 600px; margin: 0; color: var(--body); line-height: 1.85; }
+  .poster-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; align-items: start; }
+  .poster-grid--single { grid-template-columns: minmax(0, 540px); justify-content: center; }
+  .poster-grid figure { margin: 0; min-width: 0; }
+  .poster-grid a { display: block; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: #24221e; }
+  .poster-grid img { display: block; width: 100%; height: auto; }
+  .poster-grid figcaption { display: flex; justify-content: space-between; gap: 12px; margin-top: 12px; color: var(--muted); font-size: .8125rem; }
+  .poster-note { color: var(--muted); font-size: .8125rem; }
+  .poster-back { display: inline-block; margin: 16px 0 72px; }
+  @media (max-width: 700px) {
+    :global(.js .poster-case-page .site-header.is-scrolled .primary-nav) { left: -10px; right: -10px; }
+    .poster-hero { grid-template-columns: 1fr; gap: 30px; padding: 6px 0 48px; }
+    .poster-hero-stage { min-height: 0; padding: 24px; }
+    .poster-hero-stage img { max-height: 440px; }
+    .poster-section { padding: 40px 0 48px; }
+    .poster-heading { grid-template-columns: 1fr; gap: 8px; margin-bottom: 24px; }
+    .poster-grid { grid-template-columns: 1fr; gap: 28px; }
+    .poster-back { margin-bottom: 56px; }
+  }
+</style>

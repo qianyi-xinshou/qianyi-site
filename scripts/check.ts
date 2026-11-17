@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse, type DefaultTreeAdapterMap } from 'parse5';
 import { isInside, readPosts, postRoute } from '../src/lib/post-source';
+import { posterCases } from '../src/data/lejianel-posters';
 
 type Node = DefaultTreeAdapterMap['node'];
 export function inspectHtml(html: string) {
@@ -41,6 +42,7 @@ export function checkSite(root = process.cwd()) {
     .map(file => file.split(path.sep).join('/').replace(/\.astro$/, '').replace(/(?:^|\/)index$/, '') )
     .map(route => route === '404' ? '404.html' : route ? `${route}/index.html` : 'index.html'));
   for (const post of posts) expected.add(`writing/${post.slug}/index.html`);
+  for (const item of posterCases) expected.add(`work/posters/${item.slug}/index.html`);
   const files = [...globSync('**/*', { cwd: dist })].filter(file => statSync(path.join(dist, file)).isFile());
   const pages = new Map(files.filter(file => file.endsWith('.html')).map(file => [path.resolve(dist, file), inspectHtml(readFileSync(path.join(dist, file), 'utf8'))]));
   const errors: string[] = [];
